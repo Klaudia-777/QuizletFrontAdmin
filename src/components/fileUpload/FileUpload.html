@@ -1,0 +1,45 @@
+<div class="file-upload" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml"
+     xmlns:display="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+    <div class="container">
+        <h1>Aplikacja do przeprowadzania testów</h1>
+        <br>
+        <br>
+        <div class="large-28 medium-18 small-12 cell">
+            <label style="font-size: 20px">Wgraj plik ze pytaniami:
+                <input style="font-size: 20px" type="file" @change="handleFileUpload"/>
+            </label>
+            <button style="font-size: 20px" v-on:click="submitQuestionsFile">Wgraj plik
+            </button>
+        </div>
+
+        <div>
+            <br>
+            <br>
+            <p style="font-size: 20px">Ile pytań wygenerować dla każdego studenta?</p>
+            <label class="flex">
+                <select style="width:50px; height:30px" v-model="item" @change="setNumberOfQuestions(item)" required>
+                    <option v-for="item in FileUpload.noQuestionsInTest" v-bind:value="item" @>{{item}}
+                    </option>
+                </select>
+                <pre>     </pre>
+                <button style="font-size:17px; width:90px; height:30px" v-on:click="sendNumberOfQuestions">Potwierdź
+                </button>
+            </label>
+        </div>
+        <br>
+        <br>
+        <p style="font-size: 24px">Wygenerowany kod testu:</p>
+        <h1>{{FileUpload.testId.toString()}}</h1>
+        <br>
+        <br>
+        <button style="font-size: 17px"
+                v-on:click="generateResults()">Wygeneruj plik z wynikami
+        </button>
+
+        <p><a style="font-size: 20px" v-bind:href="FileUpload.info"> Pobierz plik z wynikami</a></p>
+
+    </div>
+</div>
+
+
+</div>
